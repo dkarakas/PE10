@@ -18,9 +18,10 @@ void print_weight(char*file,char*output){
     weight[int_ch]++;
   }
   //PRINTING THE WIGHT TO THE GIVEN FILE OUTPUT
-  for(i = 0; i <256; i++)
+  for(i = 0; i <256; i++){
     fprintf(out_fptr,"%ld\n",weight[i]);
-
+    fprintf(stdout,"%ld\n",weight[i]);
+  }
   fclose(out_fptr);
   fclose(fptr);
 }
