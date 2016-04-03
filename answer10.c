@@ -3,10 +3,10 @@
 #include<string.h>
 #include"answer10.h"
 
-lnode * n_construct(long int ch, int weight);
-lnode * Enqueue(lnode * * head,long int ch, int weight);
+lnode * n_construct(int ch, long int weight);
+lnode * Enqueue(lnode * * head,int ch, long int weight);
 void destroy_list(lnode* head);
-void print_list(lnode *head);
+void print_list(lnode *head, FILE* print);
 
 void print_weight(FILE*fptr,FILE* out_fptr,long int*weight){
   //VARIABLES
@@ -27,22 +27,22 @@ void print_weight(FILE*fptr,FILE* out_fptr,long int*weight){
 }
 
 void priority_queue_by_weight(FILE*fptr, long int*weight){
-  lnode *head;
+  lnode *head = NULL;
   lnode *new_node =NULL;
   int i;
+  //print_list(head);
   for(i = 0; i <256; i++){
     if(weight[i] != 0){
-      //printf("%c",i);
+      printf("\n%c\n",(char)i);
       new_node = Enqueue(&head,i,weight[i]); 
-      print_list(head);
     }
   }
 
-  print_list(head);
+  print_list(head,fptr);
   destroy_list(head);
 }
 
-lnode* n_construct(long int ch,int weight){
+lnode* n_construct(int ch,long int weight){
   lnode* new_node = (lnode *)malloc(sizeof(lnode));
   if(new_node == NULL){
     fprintf(stderr,"failed to malloc new node");
@@ -55,7 +55,7 @@ lnode* n_construct(long int ch,int weight){
   return new_node;
 } 
 
-lnode* Enqueue(lnode **head,long int ch, int weight){
+lnode* Enqueue(lnode **head,int ch,long int weight){
   lnode* new_node = n_construct(ch,weight);
   if(new_node == NULL){
     fprintf(stderr,"failed to malloc new node");
@@ -69,21 +69,24 @@ lnode* Enqueue(lnode **head,long int ch, int weight){
     if(cur->weight > new_node->weight){
       break;}
     else if(cur->weight == new_node->weight){
-      if(new_node->weight == 0){
-        fprintf(stderr,"check2");
-        break;
-      }
-      fprintf(stderr,"check");
-      if(strcmp((char *)(&cur->ch),(char *)(&prev->ch)) > 0)
-        break;
+        if(new_node->weight == 0){
+          fprintf(stderr,"check2");
+          break;
+        }
+        if((int)cur->ch < (int)prev->ch ){
+          fprintf(stdout,"\ncur(big) %c %ld prec(smal) %c %ld\n",cur->ch,cur->weight,prev->ch,prev->weight);
+          break;
+        }
+        prev = cur;
+        cur = cur->r_node;
     }else{
-      prev = cur;
-      cur = cur->r_node;
+          prev = cur;
+          cur = cur->r_node;
     }
   }
-  *head = dummy.r_node;
-  new_node->r_node = cur;
   prev->r_node = new_node;
+  new_node->r_node = cur;
+  *head = dummy.r_node;
   return new_node;
 }
 
@@ -100,12 +103,12 @@ void destroy_list(lnode *head){
 }
 
 
-void print_list(lnode *head){
+void print_list(lnode *head,FILE* fptr){
   while(head != NULL){
-    printf("%c",head->ch);
-    fprintf(stdout, "->");
+    fprintf(fptr,"%c:%ld",head->ch,head->weight);
+    fprintf(fptr, "->");
     head = head->r_node;
   } 
-  fprintf(stdout, "NULL\n");
+  fprintf(fptr, "NULL\n");
 }
 

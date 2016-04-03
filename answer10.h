@@ -3,7 +3,7 @@
 
 
  typedef struct _lnode {
-   int weight;
+   long int weight;
    char ch;
    struct _lnode* l_node;
    struct _lnode* r_node; 
