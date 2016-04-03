@@ -8,7 +8,8 @@
    struct node* r_node; 
  }node; 
 
- void print_weight(char*file,char*output,long int*weight);
+ void print_weight(FILE*file,FILE*output,long int*weight);
+ void priority_queue_by_weight(FILE*file, long int*weight);
 
 
 

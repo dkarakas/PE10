@@ -2,10 +2,8 @@
 #include<stdlib.h>
 #include"answer10.h"
 
-void print_weight(char*file,char*output,long int*weight){
+void print_weight(FILE*fptr,FILE* out_fptr,long int*weight){
   //VARIABLES
-  FILE *fptr = fopen(file,"r");
-  FILE *out_fptr = fopen(output,"w");
   int int_ch;
   int i;
   char ch;
@@ -20,7 +18,12 @@ void print_weight(char*file,char*output,long int*weight){
   for(i = 0; i <256; i++){
     fprintf(out_fptr,"%ld\n",weight[i]);
   }
-  fclose(out_fptr);
-  fclose(fptr);
 }
 
+void priority_queue_by_weight(FILE*fptr, long int*weight){
+  //
+
+
+printf("chec");
+
+}
