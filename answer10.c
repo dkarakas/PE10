@@ -32,7 +32,9 @@ void priority_queue_by_weight(FILE*fptr, long int*weight){
   int i;
   for(i = 0; i <256; i++){
     if(weight[i] != 0){
+      //printf("%c",i);
       new_node = Enqueue(&head,i,weight[i]); 
+      print_list(head);
     }
   }
 
@@ -63,13 +65,15 @@ lnode* Enqueue(lnode **head,long int ch, int weight){
   lnode* prev = &dummy;
   lnode* cur = *head;
   dummy.r_node = *head;
-  //printf(stderr,"check");
   while(cur != NULL){
-    if(cur->weight > new_node->weight)
-      break;
+    if(cur->weight > new_node->weight){
+      break;}
     else if(cur->weight == new_node->weight){
-      if(new_node->weight == 0)
+      if(new_node->weight == 0){
+        fprintf(stderr,"check2");
         break;
+      }
+      fprintf(stderr,"check");
       if(strcmp((char *)(&cur->ch),(char *)(&prev->ch)) > 0)
         break;
     }else{

@@ -26,8 +26,8 @@ int main(int argc, char**argv) {
 
   //CODE
   print_weight(fptr,out_fptr,weight); 
-  priority_queue_by_weight(out_fptr2,weight);
   
+  priority_queue_by_weight(out_fptr2,weight);
   fclose(out_fptr2);
   fclose(out_fptr);
   fclose(fptr);
