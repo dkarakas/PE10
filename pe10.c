@@ -24,9 +24,17 @@ int main(int argc, char**argv) {
     return EXIT_FAILURE;
   }
 
+  FILE *out_fptr3 = fopen(argv[4],"w+");
+  if(out_fptr2 == NULL){
+    fprintf(stderr,"failed to open file output2");
+    return EXIT_FAILURE;
+  }
+
   //CODE
   print_weight(fptr,out_fptr,weight); 
-  priority_queue_by_weight(out_fptr2,weight);
+  priority_queue_by_weight(out_fptr2,weight,out_fptr3);
+
+  fclose(out_fptr3);
   fclose(out_fptr2);
   fclose(out_fptr);
   fclose(fptr);

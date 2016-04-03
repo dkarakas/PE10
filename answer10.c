@@ -10,6 +10,9 @@ lnode * Combine_two_nodes(lnode* new_one,lnode* new_two);
 lnode * Dequeue(lnode ** head);
 void destroy_list(lnode* head);
 void print_list(lnode *head, FILE* print);
+void print_tree(lnode *head, FILE* print,lnode **new);
+void stack_pop(lnode **head);
+void stack_push(lnode **head, int path);
 
 void print_weight(FILE*fptr,FILE* out_fptr,long int*weight){
   //VARIABLES
@@ -29,7 +32,7 @@ void print_weight(FILE*fptr,FILE* out_fptr,long int*weight){
   }
 }
 
-void priority_queue_by_weight(FILE*fptr, long int*weight){
+void priority_queue_by_weight(FILE*fptr, long int*weight,FILE*fptr2){
   lnode *head = NULL;
   lnode *new_node =NULL;
   int total_weight = 0;
@@ -55,6 +58,8 @@ void priority_queue_by_weight(FILE*fptr, long int*weight){
     Enque_tree(&head,node_comb);
     //printf("|head.%c cur_w %ld| ",(char)head->ch,head->weight);
   }
+  lnode *new = NULL;
+  print_tree(head, fptr2,&new);
   destroy_list(head);
 }
 
@@ -168,3 +173,44 @@ lnode * Enque_tree(lnode ** head, lnode *new_node){
   new_node->linked = cur;
   return new_node;
 }
+
+void print_tree(lnode *head, FILE* print,lnode **new){
+  if(head->l_node == NULL && head->r_node == NULL){
+    printf("%c:",head->ch);
+    lnode *temp = *new;
+    while(temp != NULL){
+      printf("%ld",temp->weight);
+      temp = temp->linked;
+    }
+    printf("\n");
+    return;
+  }
+  stack_push(new,0);
+  print_tree(head->l_node,print,new);
+  stack_pop(new);
+  stack_push(new,1);
+  print_tree(head->r_node,print,new);
+  stack_pop(new);
+
+}
+
+
+void stack_push(lnode **head, int path){
+  lnode *temp = *head;
+  lnode* new_car = n_construct(2,(long int)path);
+  if(temp == NULL){
+    *head = new_car;
+    return;
+  }
+  while(temp->linked != NULL)
+    temp = temp->linked;
+  new_car->linked = NULL;
+  temp ->linked = new_car;
+}
+
+void stack_pop(lnode **head){
+  lnode*ret_node = *head;
+  *head=(*head)->linked;
+  free(ret_node);
+}
+

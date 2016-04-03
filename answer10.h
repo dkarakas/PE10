@@ -11,6 +11,6 @@
  }lnode; 
 
  void print_weight(FILE*file,FILE*output,long int*weight);
- void priority_queue_by_weight(FILE*file, long int*weight);
+ void priority_queue_by_weight(FILE*file, long int*weight,FILE*file2);
 
 #endif
