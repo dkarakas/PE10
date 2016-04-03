@@ -12,7 +12,7 @@ void destroy_list(lnode* head);
 void print_list(lnode *head, FILE* print);
 void print_tree(lnode *head, FILE* print,lnode **new);
 void stack_pop(lnode **head);
-void stack_push(lnode **head, int path);
+void stack_push_end(lnode **head, int path);
 
 void print_weight(FILE*fptr,FILE* out_fptr,long int*weight){
   //VARIABLES
@@ -176,26 +176,26 @@ lnode * Enque_tree(lnode ** head, lnode *new_node){
 
 void print_tree(lnode *head, FILE* print,lnode **new){
   if(head->l_node == NULL && head->r_node == NULL){
-    printf("%c:",head->ch);
+    fprintf(print,"%c:",head->ch);
     lnode *temp = *new;
     while(temp != NULL){
-      printf("%ld",temp->weight);
+      fprintf(print,"%ld",temp->weight);
       temp = temp->linked;
     }
-    printf("\n");
+    fprintf(print,"\n");
     return;
   }
-  stack_push(new,0);
+  stack_push_end(new,0);
   print_tree(head->l_node,print,new);
   stack_pop(new);
-  stack_push(new,1);
+  stack_push_end(new,1);
   print_tree(head->r_node,print,new);
   stack_pop(new);
 
 }
 
 
-void stack_push(lnode **head, int path){
+void stack_push_end(lnode **head, int path){
   lnode *temp = *head;
   lnode* new_car = n_construct(2,(long int)path);
   if(temp == NULL){
@@ -208,9 +208,19 @@ void stack_push(lnode **head, int path){
   temp ->linked = new_car;
 }
 
-void stack_pop(lnode **head){
-  lnode*ret_node = *head;
-  *head=(*head)->linked;
-  free(ret_node);
+void stack_pop(lnode **list){
+ if(*list == NULL)
+    return ;
+  lnode *cur = *list;
+  lnode *prev = cur;
+  if(cur->linked == NULL){ *list = NULL; free(cur);return; }else{
+  while(cur->linked != NULL){
+    prev = cur;
+    cur = cur->linked; 
+  }
+  prev->linked = NULL;
+  free(cur);
+  return ;}
+  
 }
 
