@@ -2,11 +2,10 @@
 #include<stdlib.h>
 #include"answer10.h"
 
-void print_weight(char*file,char*output){
+void print_weight(char*file,char*output,long int*weight){
   //VARIABLES
   FILE *fptr = fopen(file,"r");
   FILE *out_fptr = fopen(output,"w");
-  long int weight[256] = {0};
   int int_ch;
   int i;
   char ch;
@@ -20,7 +19,6 @@ void print_weight(char*file,char*output){
   //PRINTING THE WIGHT TO THE GIVEN FILE OUTPUT
   for(i = 0; i <256; i++){
     fprintf(out_fptr,"%ld\n",weight[i]);
-    fprintf(stdout,"%ld\n",weight[i]);
   }
   fclose(out_fptr);
   fclose(fptr);
