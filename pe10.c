@@ -18,7 +18,7 @@ int main(int argc, char**argv) {
     fprintf(stderr,"failed to open file output1");
     return EXIT_FAILURE;
   }
-  FILE *out_fptr2 = fopen(argv[2],"w");
+  FILE *out_fptr2 = fopen(argv[3],"w+");
   if(out_fptr2 == NULL){
     fprintf(stderr,"failed to open file output2");
     return EXIT_FAILURE;
@@ -26,7 +26,6 @@ int main(int argc, char**argv) {
 
   //CODE
   print_weight(fptr,out_fptr,weight); 
-  
   priority_queue_by_weight(out_fptr2,weight);
   fclose(out_fptr2);
   fclose(out_fptr);

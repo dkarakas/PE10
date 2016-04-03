@@ -31,10 +31,10 @@ void priority_queue_by_weight(FILE*fptr, long int*weight){
   lnode *new_node =NULL;
   int i;
   //print_list(head);
-  for(i = 0; i <256; i++){
+  for(i = 0; i < 256; i++){
     if(weight[i] != 0){
-      printf("\n%c\n",(char)i);
       new_node = Enqueue(&head,i,weight[i]); 
+//print_list(head,fptr);
     }
   }
 
@@ -73,8 +73,8 @@ lnode* Enqueue(lnode **head,int ch,long int weight){
           fprintf(stderr,"check2");
           break;
         }
-        if((int)cur->ch < (int)prev->ch ){
-          fprintf(stdout,"\ncur(big) %c %ld prec(smal) %c %ld\n",cur->ch,cur->weight,prev->ch,prev->weight);
+        if((int) cur->ch > (int) new_node->ch ){
+          fprintf(stdout,"\ncur(big) %c %ld prec(smal) %c %ld \n",cur->ch,cur->weight,new_node->ch,new_node->weight);
           break;
         }
         prev = cur;
