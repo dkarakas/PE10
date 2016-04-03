@@ -50,10 +50,10 @@ void priority_queue_by_weight(FILE*fptr, long int*weight){
   while(head->weight != total_weight){
     node_one = Dequeue(&head);
     node_two = Dequeue(&head);
-    printf(".%c  .%c ",(char)node_one->ch,(char)node_two->ch);
+    //printf(".%c  .%c ",(char)node_one->ch,(char)node_two->ch);
     node_comb = Combine_two_nodes(node_one,node_two);
     Enque_tree(&head,node_comb);
-    printf("|head.%c cur_w %ld| ",(char)head->ch,head->weight);
+    //printf("|head.%c cur_w %ld| ",(char)head->ch,head->weight);
   }
   destroy_list(head);
 }
@@ -68,6 +68,7 @@ lnode* n_construct(int ch,long int weight){
   new_node->ch = (char)ch;
   new_node->l_node = NULL;
   new_node->r_node = NULL;
+  new_node->linked = NULL;
   return new_node;
 } 
 
@@ -80,7 +81,7 @@ lnode* Enqueue(lnode **head,int ch,long int weight){
   lnode dummy;
   lnode* prev = &dummy;
   lnode* cur = *head;
-  dummy.r_node = *head;
+  dummy.linked= *head;
   while(cur != NULL){
     if(cur->weight > new_node->weight){
       break;}
@@ -90,15 +91,15 @@ lnode* Enqueue(lnode **head,int ch,long int weight){
           break;
         }
         prev = cur;
-        cur = cur->r_node;
+        cur = cur->linked;
     }else{
           prev = cur;
-          cur = cur->r_node;
+          cur = cur->linked;
     }
   }
-  prev->r_node = new_node;
-  new_node->r_node = cur;
-  *head = dummy.r_node;
+  prev->linked= new_node;
+  new_node->linked = cur;
+  *head = dummy.linked;
   return new_node;
 }
 
@@ -106,8 +107,8 @@ lnode* Enqueue(lnode **head,int ch,long int weight){
 void destroy_list(lnode *head){
   /*lnode *temp = head;
   while(head != NULL){
-    temp = head->r_node;
-    head->r_node = NULL;
+    temp = head->linked;
+    head->linked = NULL;
     free(head);
     head = temp;
   }*/
@@ -123,7 +124,7 @@ void print_list(lnode *head,FILE* fptr){
   while(head != NULL){
     fprintf(fptr,"%c:%ld",head->ch,head->weight);
     fprintf(fptr, "->");
-    head = head->r_node;
+    head = head->linked;
   } 
   fprintf(fptr, "NULL\n");
 }
@@ -133,9 +134,9 @@ lnode * Dequeue(lnode ** head){
     return NULL;
   lnode* ret_node = NULL;
   ret_node = *head;
-  *head = ret_node->r_node;
-  ret_node->r_node = NULL;
-  return ret_node;
+  *head = ret_node->linked;
+  ret_node->linked = NULL;
+    return ret_node;
 }
 
 lnode * Combine_two_nodes(lnode* new_one,lnode* new_two){
@@ -147,10 +148,11 @@ lnode * Combine_two_nodes(lnode* new_one,lnode* new_two){
 }
 
 lnode * Enque_tree(lnode ** head, lnode *new_node){
-  if(*head == NULL)
-    return NULL;
+  if(*head == NULL){
+    return *head = new_node;
+  }
   lnode dummy;
-  dummy.r_node = *head;
+  dummy.linked = *head;
   lnode* prev = &dummy;
   lnode* cur = *head;
 
@@ -159,10 +161,10 @@ lnode * Enque_tree(lnode ** head, lnode *new_node){
        break;
     }
     prev = cur;
-    cur = cur->r_node;
+    cur = cur->linked;
   }
-  *head =dummy.r_node;
-  prev->r_node = new_node;
-  new_node->r_node = cur;
+  *head =dummy.linked;
+  prev->linked = new_node;
+  new_node->linked = cur;
   return new_node;
 }
