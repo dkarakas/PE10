@@ -43,10 +43,18 @@ void priority_queue_by_weight(FILE*fptr, long int*weight){
   }
   print_list(head,fptr);
 
+  lnode *node_one;
+  lnode *node_two;
+  lnode *node_comb;
   //CREATING TREE 
-  //while(head->weight != total_weight){
-    //Enque_tree(&head,Combine_two_nodes(Dequeue(&head),Dequeue(&head)));
-  //}
+  while(head->weight != total_weight){
+    node_one = Dequeue(&head);
+    node_two = Dequeue(&head);
+    printf(".%c  .%c ",(char)node_one->ch,(char)node_two->ch);
+    node_comb = Combine_two_nodes(node_one,node_two);
+    Enque_tree(&head,node_comb);
+    printf("|head.%c cur_w %ld| ",(char)head->ch,head->weight);
+  }
   destroy_list(head);
 }
 
@@ -121,17 +129,20 @@ void print_list(lnode *head,FILE* fptr){
 }
 
 lnode * Dequeue(lnode ** head){
-  lnode*ret_node = NULL;
+  if(*head == NULL)
+    return NULL;
+  lnode* ret_node = NULL;
   ret_node = *head;
-  *head = (*head)->r_node;
+  *head = ret_node->r_node;
   ret_node->r_node = NULL;
   return ret_node;
 }
 
 lnode * Combine_two_nodes(lnode* new_one,lnode* new_two){
-  lnode*new_node = (lnode*)malloc(sizeof(lnode));
+  lnode* new_node = (lnode*)malloc(sizeof(lnode));
   new_node->l_node = new_one;
   new_node->r_node = new_two;
+  new_node->weight = new_one->weight+new_two->weight;
   return new_node;  
 }
 
@@ -139,11 +150,16 @@ lnode * Enque_tree(lnode ** head, lnode *new_node){
   if(*head == NULL)
     return NULL;
   lnode dummy;
+  dummy.r_node = *head;
   lnode* prev = &dummy;
   lnode* cur = *head;
+
   while(cur!=NULL){
-   if(cur->weight > new_node->weight)
-      break;
+    if(cur->weight > new_node->weight){
+       break;
+    }
+    prev = cur;
+    cur = cur->r_node;
   }
   *head =dummy.r_node;
   prev->r_node = new_node;

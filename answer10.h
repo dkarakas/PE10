@@ -5,6 +5,7 @@
  typedef struct _lnode {
    long int weight;
    char ch;
+   struct _lnode* linked;
    struct _lnode* l_node;
    struct _lnode* r_node; 
  }lnode; 

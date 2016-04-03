@@ -1,66 +1,216 @@
-==29741== Memcheck, a memory error detector
-==29741== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
-==29741== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
-==29741== Command: ./pe10 gophers gophers.count gophers.sorted gophers.huffman
-==29741== Parent PID: 29740
-==29741== 
---29741-- 
---29741-- Valgrind options:
---29741--    --tool=memcheck
---29741--    --verbose
---29741--    --log-file=./logfile
---29741-- Contents of /proc/version:
---29741--   Linux version 2.6.32-573.18.1.el6.x86_64 (mockbuild@x86-010.build.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-16) (GCC) ) #1 SMP Wed Jan 6 11:20:49 EST 2016
---29741-- Arch and hwcaps: AMD64, amd64-sse3-cx16-lzcnt-avx2-bmi
---29741-- Page sizes: currently 4096, max supported 4096
---29741-- Valgrind library directory: /usr/lib64/valgrind
---29741-- Reading syms from /home/shay/a/dkarakas/ece hw/PE10/PE10/pe10
---29741-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
---29741--    object doesn't have a dynamic symbol table
---29741-- Reading syms from /lib64/ld-2.12.so
---29741--   Considering /usr/lib/debug/.build-id/95/9c5e10a47ee8a633e7681b64b4b9f74e242ed5.debug ..
---29741--   .. build-id is valid
---29741-- Scheduler: using generic scheduler lock implementation.
---29741-- Reading suppressions file: /usr/lib64/valgrind/default.supp
-==29741== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-29741-by-dkarakas-on-ecegrid-thin6.ecn.purdue.edu
-==29741== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-29741-by-dkarakas-on-ecegrid-thin6.ecn.purdue.edu
-==29741== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-29741-by-dkarakas-on-ecegrid-thin6.ecn.purdue.edu
-==29741== 
-==29741== TO CONTROL THIS PROCESS USING vgdb (which you probably
-==29741== don't want to do, unless you know exactly what you're doing,
-==29741== or are doing some strange experiment):
-==29741==   /usr/lib64/valgrind/../../bin/vgdb --pid=29741 ...command...
-==29741== 
-==29741== TO DEBUG THIS PROCESS USING GDB: start GDB like this
-==29741==   /path/to/gdb ./pe10
-==29741== and then give GDB the following command
-==29741==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=29741
-==29741== --pid is optional if only one valgrind process is running
-==29741== 
---29741-- REDIR: 0x3a1f817c30 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
---29741-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
---29741-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
---29741-- REDIR: 0x3a1f817a40 (index) redirected to 0x4a07c30 (index)
---29741-- REDIR: 0x3a1f817ac0 (strcmp) redirected to 0x4a08570 (strcmp)
---29741-- Reading syms from /lib64/libc-2.12.so
---29741--   Considering /usr/lib/debug/.build-id/a1/db9754d1f523a6f16ada929d6764a133dc6fa2.debug ..
---29741--   .. build-id is valid
---29741-- REDIR: 0x3a1fc84d00 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---29741-- REDIR: 0x3a1fc86fc0 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---29741-- REDIR: 0x3a1fc82c70 (__GI_strrchr) redirected to 0x4a07ab0 (__GI_strrchr)
---29741-- REDIR: 0x3a1fc7aac0 (malloc) redirected to 0x4a069ac (malloc)
---29741-- REDIR: 0x3a1fc8ab20 (strchrnul) redirected to 0x4a09fb0 (strchrnul)
---29741-- REDIR: 0x3a1fc7b920 (free) redirected to 0x4a063a9 (free)
-==29741== 
-==29741== HEAP SUMMARY:
-==29741==     in use at exit: 0 bytes in 0 blocks
-==29741==   total heap usage: 11 allocs, 11 frees, 1,960 bytes allocated
-==29741== 
-==29741== All heap blocks were freed -- no leaks are possible
-==29741== 
-==29741== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
---29741-- 
---29741-- used_suppression:      4 U1004-ARM-_dl_relocate_object
---29741-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
-==29741== 
-==29741== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
+==34035== Memcheck, a memory error detector
+==34035== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==34035== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==34035== Command: ./pe10 gophers gophers.count gophers.sorted gophers.huffman
+==34035== Parent PID: 34030
+==34035== 
+--34035-- 
+--34035-- Valgrind options:
+--34035--    --tool=memcheck
+--34035--    --verbose
+--34035--    --log-file=./logfile
+--34035-- Contents of /proc/version:
+--34035--   Linux version 2.6.32-573.18.1.el6.x86_64 (mockbuild@x86-010.build.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-16) (GCC) ) #1 SMP Wed Jan 6 11:20:49 EST 2016
+--34035-- Arch and hwcaps: AMD64, amd64-sse3-cx16-lzcnt-avx2-bmi
+--34035-- Page sizes: currently 4096, max supported 4096
+--34035-- Valgrind library directory: /usr/lib64/valgrind
+--34035-- Reading syms from /home/shay/a/dkarakas/ece hw/PE10/PE10/pe10
+--34035-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--34035--    object doesn't have a dynamic symbol table
+--34035-- Reading syms from /lib64/ld-2.12.so
+--34035--   Considering /usr/lib/debug/.build-id/95/9c5e10a47ee8a633e7681b64b4b9f74e242ed5.debug ..
+--34035--   .. build-id is valid
+--34035-- Scheduler: using generic scheduler lock implementation.
+--34035-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==34035== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-34035-by-dkarakas-on-ecegrid-thin6.ecn.purdue.edu
+==34035== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-34035-by-dkarakas-on-ecegrid-thin6.ecn.purdue.edu
+==34035== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-34035-by-dkarakas-on-ecegrid-thin6.ecn.purdue.edu
+==34035== 
+==34035== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==34035== don't want to do, unless you know exactly what you're doing,
+==34035== or are doing some strange experiment):
+==34035==   /usr/lib64/valgrind/../../bin/vgdb --pid=34035 ...command...
+==34035== 
+==34035== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==34035==   /path/to/gdb ./pe10
+==34035== and then give GDB the following command
+==34035==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=34035
+==34035== --pid is optional if only one valgrind process is running
+==34035== 
+--34035-- REDIR: 0x3a1f817c30 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--34035-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--34035-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--34035-- REDIR: 0x3a1f817a40 (index) redirected to 0x4a07c30 (index)
+--34035-- REDIR: 0x3a1f817ac0 (strcmp) redirected to 0x4a08570 (strcmp)
+--34035-- Reading syms from /lib64/libc-2.12.so
+--34035--   Considering /usr/lib/debug/.build-id/a1/db9754d1f523a6f16ada929d6764a133dc6fa2.debug ..
+--34035--   .. build-id is valid
+--34035-- REDIR: 0x3a1fc84d00 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--34035-- REDIR: 0x3a1fc86fc0 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--34035-- REDIR: 0x3a1fc82c70 (__GI_strrchr) redirected to 0x4a07ab0 (__GI_strrchr)
+--34035-- REDIR: 0x3a1fc7aac0 (malloc) redirected to 0x4a069ac (malloc)
+--34035-- REDIR: 0x3a1fc8ab20 (strchrnul) redirected to 0x4a09fb0 (strchrnul)
+--34035-- REDIR: 0x3a1fc7b920 (free) redirected to 0x4a063a9 (free)
+==34035== Conditional jump or move depends on uninitialised value(s)
+==34035==    at 0x3A1FC722CB: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:872)
+==34035==    by 0x3A1FC49203: vfprintf (vfprintf.c:1641)
+==34035==    by 0x3A1FC4F189: printf (printf.c:35)
+==34035==    by 0x400AD3: priority_queue_by_weight (answer10.c:56)
+==34035==    by 0x4008BB: main (pe10.c:29)
+==34035== 
+==34035== Conditional jump or move depends on uninitialised value(s)
+==34035==    at 0x3A1FC722F3: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:879)
+==34035==    by 0x3A1FC49203: vfprintf (vfprintf.c:1641)
+==34035==    by 0x3A1FC4F189: printf (printf.c:35)
+==34035==    by 0x400AD3: priority_queue_by_weight (answer10.c:56)
+==34035==    by 0x4008BB: main (pe10.c:29)
+==34035== 
+==34035== Conditional jump or move depends on uninitialised value(s)
+==34035==    at 0x3A1FC4920D: vfprintf (vfprintf.c:1641)
+==34035==    by 0x3A1FC4F189: printf (printf.c:35)
+==34035==    by 0x400AD3: priority_queue_by_weight (answer10.c:56)
+==34035==    by 0x4008BB: main (pe10.c:29)
+==34035== 
+==34035== Conditional jump or move depends on uninitialised value(s)
+==34035==    at 0x3A1FC722CB: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:872)
+==34035==    by 0x3A1FC49203: vfprintf (vfprintf.c:1641)
+==34035==    by 0x3A1FC4F189: printf (printf.c:35)
+==34035==    by 0x400A83: priority_queue_by_weight (answer10.c:53)
+==34035==    by 0x4008BB: main (pe10.c:29)
+==34035== 
+==34035== Conditional jump or move depends on uninitialised value(s)
+==34035==    at 0x3A1FC722F3: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:879)
+==34035==    by 0x3A1FC49203: vfprintf (vfprintf.c:1641)
+==34035==    by 0x3A1FC4F189: printf (printf.c:35)
+==34035==    by 0x400A83: priority_queue_by_weight (answer10.c:53)
+==34035==    by 0x4008BB: main (pe10.c:29)
+==34035== 
+==34035== Conditional jump or move depends on uninitialised value(s)
+==34035==    at 0x3A1FC4920D: vfprintf (vfprintf.c:1641)
+==34035==    by 0x3A1FC4F189: printf (printf.c:35)
+==34035==    by 0x400A83: priority_queue_by_weight (answer10.c:53)
+==34035==    by 0x4008BB: main (pe10.c:29)
+==34035== 
+==34035== Invalid read of size 8
+==34035==    at 0x400AB2: priority_queue_by_weight (answer10.c:56)
+==34035==    by 0x4008BB: main (pe10.c:29)
+==34035==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==34035== 
+==34035== 
+==34035== Process terminating with default action of signal 11 (SIGSEGV)
+==34035==  Access not within mapped region at address 0x0
+==34035==    at 0x400AB2: priority_queue_by_weight (answer10.c:56)
+==34035==    by 0x4008BB: main (pe10.c:29)
+==34035==  If you believe this happened as a result of a stack
+==34035==  overflow in your program's main thread (unlikely but
+==34035==  possible), you can try to increase the size of the
+==34035==  main thread stack using the --main-stacksize= flag.
+==34035==  The main thread stack size used in this run was 10485760.
+==34035== Syscall param write(buf) points to uninitialised byte(s)
+==34035==    at 0x3A1FCDB560: __write_nocancel (syscall-template.S:82)
+==34035==    by 0x3A1FC71AD2: _IO_file_write@@GLIBC_2.2.5 (fileops.c:1268)
+==34035==    by 0x3A1FC73084: _IO_do_write@@GLIBC_2.2.5 (fileops.c:522)
+==34035==    by 0x3A1FC73DF2: _IO_flush_all_lockp (genops.c:849)
+==34035==    by 0x3A1FC74C9E: _IO_cleanup (genops.c:1010)
+==34035==    by 0x3A1FD40CE2: __libc_freeres (in /lib64/libc-2.12.so)
+==34035==    by 0x480166D: _vgnU_freeres (vg_preloaded.c:62)
+==34035==    by 0x7FEFFF53F: ???
+==34035==    by 0x4008BB: main (pe10.c:29)
+==34035==  Address 0x4c0e03d is not stack'd, malloc'd or (recently) free'd
+==34035== 
+==34035== 
+==34035== HEAP SUMMARY:
+==34035==     in use at exit: 2,184 bytes in 18 blocks
+==34035==   total heap usage: 18 allocs, 0 frees, 2,184 bytes allocated
+==34035== 
+==34035== Searching for pointers to 18 not-freed blocks
+==34035== Checked 1,117,936 bytes
+==34035== 
+==34035== LEAK SUMMARY:
+==34035==    definitely lost: 192 bytes in 6 blocks
+==34035==    indirectly lost: 96 bytes in 3 blocks
+==34035==      possibly lost: 0 bytes in 0 blocks
+==34035==    still reachable: 1,896 bytes in 9 blocks
+==34035==         suppressed: 0 bytes in 0 blocks
+==34035== Rerun with --leak-check=full to see details of leaked memory
+==34035== 
+==34035== Use --track-origins=yes to see where uninitialised values come from
+==34035== ERROR SUMMARY: 29 errors from 8 contexts (suppressed: 6 from 6)
+==34035== 
+==34035== 1 errors in context 1 of 8:
+==34035== Syscall param write(buf) points to uninitialised byte(s)
+==34035==    at 0x3A1FCDB560: __write_nocancel (syscall-template.S:82)
+==34035==    by 0x3A1FC71AD2: _IO_file_write@@GLIBC_2.2.5 (fileops.c:1268)
+==34035==    by 0x3A1FC73084: _IO_do_write@@GLIBC_2.2.5 (fileops.c:522)
+==34035==    by 0x3A1FC73DF2: _IO_flush_all_lockp (genops.c:849)
+==34035==    by 0x3A1FC74C9E: _IO_cleanup (genops.c:1010)
+==34035==    by 0x3A1FD40CE2: __libc_freeres (in /lib64/libc-2.12.so)
+==34035==    by 0x480166D: _vgnU_freeres (vg_preloaded.c:62)
+==34035==    by 0x7FEFFF53F: ???
+==34035==    by 0x4008BB: main (pe10.c:29)
+==34035==  Address 0x4c0e03d is not stack'd, malloc'd or (recently) free'd
+==34035== 
+==34035== 
+==34035== 1 errors in context 2 of 8:
+==34035== Invalid read of size 8
+==34035==    at 0x400AB2: priority_queue_by_weight (answer10.c:56)
+==34035==    by 0x4008BB: main (pe10.c:29)
+==34035==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==34035== 
+==34035== 
+==34035== 3 errors in context 3 of 8:
+==34035== Conditional jump or move depends on uninitialised value(s)
+==34035==    at 0x3A1FC4920D: vfprintf (vfprintf.c:1641)
+==34035==    by 0x3A1FC4F189: printf (printf.c:35)
+==34035==    by 0x400AD3: priority_queue_by_weight (answer10.c:56)
+==34035==    by 0x4008BB: main (pe10.c:29)
+==34035== 
+==34035== 
+==34035== 3 errors in context 4 of 8:
+==34035== Conditional jump or move depends on uninitialised value(s)
+==34035==    at 0x3A1FC722F3: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:879)
+==34035==    by 0x3A1FC49203: vfprintf (vfprintf.c:1641)
+==34035==    by 0x3A1FC4F189: printf (printf.c:35)
+==34035==    by 0x400AD3: priority_queue_by_weight (answer10.c:56)
+==34035==    by 0x4008BB: main (pe10.c:29)
+==34035== 
+==34035== 
+==34035== 3 errors in context 5 of 8:
+==34035== Conditional jump or move depends on uninitialised value(s)
+==34035==    at 0x3A1FC722CB: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:872)
+==34035==    by 0x3A1FC49203: vfprintf (vfprintf.c:1641)
+==34035==    by 0x3A1FC4F189: printf (printf.c:35)
+==34035==    by 0x400AD3: priority_queue_by_weight (answer10.c:56)
+==34035==    by 0x4008BB: main (pe10.c:29)
+==34035== 
+==34035== 
+==34035== 6 errors in context 6 of 8:
+==34035== Conditional jump or move depends on uninitialised value(s)
+==34035==    at 0x3A1FC4920D: vfprintf (vfprintf.c:1641)
+==34035==    by 0x3A1FC4F189: printf (printf.c:35)
+==34035==    by 0x400A83: priority_queue_by_weight (answer10.c:53)
+==34035==    by 0x4008BB: main (pe10.c:29)
+==34035== 
+==34035== 
+==34035== 6 errors in context 7 of 8:
+==34035== Conditional jump or move depends on uninitialised value(s)
+==34035==    at 0x3A1FC722F3: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:879)
+==34035==    by 0x3A1FC49203: vfprintf (vfprintf.c:1641)
+==34035==    by 0x3A1FC4F189: printf (printf.c:35)
+==34035==    by 0x400A83: priority_queue_by_weight (answer10.c:53)
+==34035==    by 0x4008BB: main (pe10.c:29)
+==34035== 
+==34035== 
+==34035== 6 errors in context 8 of 8:
+==34035== Conditional jump or move depends on uninitialised value(s)
+==34035==    at 0x3A1FC722CB: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:872)
+==34035==    by 0x3A1FC49203: vfprintf (vfprintf.c:1641)
+==34035==    by 0x3A1FC4F189: printf (printf.c:35)
+==34035==    by 0x400A83: priority_queue_by_weight (answer10.c:53)
+==34035==    by 0x4008BB: main (pe10.c:29)
+==34035== 
+--34035-- 
+--34035-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--34035-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==34035== 
+==34035== ERROR SUMMARY: 29 errors from 8 contexts (suppressed: 6 from 6)
