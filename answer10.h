@@ -8,7 +8,7 @@
    struct node* r_node; 
  }node; 
 
-
+ void print_weight(char*file, char*output);
 
 
 

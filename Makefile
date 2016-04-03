@@ -3,7 +3,7 @@ GCC = gcc
 DEFINES = -DTEST_DIVIDE -DTEST_INTERLEAVE -DTEST_SHUFFLE
 CFLAGS = -g -Wall -Wshadow -Werror $(DEFINES)
 CC = $(GCC) $(CFLAGS) $(DEFINES)
-SRCS = pa03.c answer03.c 
+SRCS = pe10.c answer10.c 
 OBJS = $(SRCS:%.c=%.o)
 VALGRIND = valgrind --tool=memcheck --verbose --log-file
 
